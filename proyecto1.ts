@@ -164,14 +164,15 @@ class Mercado {
         }
     }
 
-    // Mostrar mensaje inicial con las empresas ofreciendo acciones
+    // Función para mostrar el mensaje inicial con las empresas
     mostrarEmpresas() {
-        console.log("📢 ¡Bienvenidos al mercado de acciones!");
-        console.log("Hoy están ofreciendo sus acciones las siguientes empresas:");
-        console.log("1. TechCorp - Compañía tecnológica líder en innovación.");
-        console.log("2. FinCo - Empresa financiera destacada en el mercado.");
+        console.log("📢 Bienvenidos al Simulador de Mercado de Acciones.");
+        console.log("Las siguientes empresas están ofreciendo sus acciones en este momento:");
+        console.log("1. TechCorp - Líder en el sector tecnológico.");
+        console.log("2. FinCo - Referente en el sector financiero.");
         console.log("--------------------------------------------------------");
     }
+
 }
 
 // Probar el simulador con más órdenes para poner a prueba los montículos
