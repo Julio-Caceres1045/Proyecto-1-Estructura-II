@@ -168,18 +168,21 @@ class Mercado {
 // Probar el simulador con más órdenes para poner a prueba los montículos
 const mercado = new Mercado();
 
-// Órdenes de compra y venta de diferentes compañías y usuarios
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 150, 60, "Usuario1"));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 100, 55, "Usuario2"));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 70, 58, "Usuario3"));
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 80, 56, "Usuario4"));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 50, 62, "Usuario5"));
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 120, 65, "Usuario6"));
-mercado.enviarOrden(new Orden("venta", "EmpresaB", 200, 75, "Usuario7"));
-mercado.enviarOrden(new Orden("compra", "EmpresaB", 100, 80, "Usuario8"));
-mercado.enviarOrden(new Orden("venta", "EmpresaB", 100, 70, "Usuario9"));
-mercado.enviarOrden(new Orden("compra", "EmpresaC", 90, 90, "Usuario10"));
-mercado.enviarOrden(new Orden("venta", "EmpresaC", 100, 85, "Usuario11"));
+// Órdenes de compra y venta de diferentes compañías con los mismos nombres para el comprador y vendedor
+const comprador = "Carlos";
+const vendedor = "Sofía";
+
+mercado.enviarOrden(new Orden("compra", "EmpresaA", 150, 60, comprador));
+mercado.enviarOrden(new Orden("venta", "EmpresaA", 100, 55, vendedor));
+mercado.enviarOrden(new Orden("venta", "EmpresaA", 70, 58, vendedor));
+mercado.enviarOrden(new Orden("compra", "EmpresaA", 80, 56, comprador));
+mercado.enviarOrden(new Orden("venta", "EmpresaA", 50, 62, vendedor));
+mercado.enviarOrden(new Orden("compra", "EmpresaA", 120, 65, comprador));
+mercado.enviarOrden(new Orden("venta", "EmpresaB", 200, 75, vendedor));
+mercado.enviarOrden(new Orden("compra", "EmpresaB", 100, 80, comprador));
+mercado.enviarOrden(new Orden("venta", "EmpresaB", 100, 70, vendedor));
+mercado.enviarOrden(new Orden("compra", "EmpresaC", 90, 90, comprador));
+mercado.enviarOrden(new Orden("venta", "EmpresaC", 100, 85, vendedor));
 
 // Mostrar el historial de transacciones de forma bonita
 mercado.mostrarHistorialBonito();
