@@ -163,26 +163,40 @@ class Mercado {
             });
         }
     }
+
+    // Mostrar mensaje inicial con las empresas ofreciendo acciones
+    mostrarEmpresas() {
+        console.log("📢 ¡Bienvenidos al mercado de acciones!");
+        console.log("Hoy están ofreciendo sus acciones las siguientes empresas:");
+        console.log("1. TechCorp - Compañía tecnológica líder en innovación.");
+        console.log("2. FinCo - Empresa financiera destacada en el mercado.");
+        console.log("--------------------------------------------------------");
+    }
 }
 
 // Probar el simulador con más órdenes para poner a prueba los montículos
 const mercado = new Mercado();
 
-// Órdenes de compra y venta de diferentes compañías con los mismos nombres para el comprador y vendedor
+// Mostrar las empresas antes de las transacciones
+mercado.mostrarEmpresas();
+
+// Órdenes de compra y venta para las dos empresas
 const comprador = "Carlos";
 const vendedor = "Sofía";
 
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 150, 60, comprador));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 100, 55, vendedor));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 70, 58, vendedor));
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 80, 56, comprador));
-mercado.enviarOrden(new Orden("venta", "EmpresaA", 50, 62, vendedor));
-mercado.enviarOrden(new Orden("compra", "EmpresaA", 120, 65, comprador));
-mercado.enviarOrden(new Orden("venta", "EmpresaB", 200, 75, vendedor));
-mercado.enviarOrden(new Orden("compra", "EmpresaB", 100, 80, comprador));
-mercado.enviarOrden(new Orden("venta", "EmpresaB", 100, 70, vendedor));
-mercado.enviarOrden(new Orden("compra", "EmpresaC", 90, 90, comprador));
-mercado.enviarOrden(new Orden("venta", "EmpresaC", 100, 85, vendedor));
+// TechCorp
+mercado.enviarOrden(new Orden("compra", "TechCorp", 150, 60, comprador));
+mercado.enviarOrden(new Orden("venta", "TechCorp", 100, 55, vendedor));
+mercado.enviarOrden(new Orden("venta", "TechCorp", 70, 58, vendedor));
+mercado.enviarOrden(new Orden("compra", "TechCorp", 80, 56, comprador));
+mercado.enviarOrden(new Orden("venta", "TechCorp", 50, 62, vendedor));
+mercado.enviarOrden(new Orden("compra", "TechCorp", 120, 65, comprador));
+
+// FinCo
+mercado.enviarOrden(new Orden("venta", "FinCo", 200, 75, vendedor));
+mercado.enviarOrden(new Orden("compra", "FinCo", 100, 80, comprador));
+mercado.enviarOrden(new Orden("venta", "FinCo", 100, 70, vendedor));
+mercado.enviarOrden(new Orden("compra", "FinCo", 90, 90, comprador));
 
 // Mostrar el historial de transacciones de forma bonita
 mercado.mostrarHistorialBonito();
