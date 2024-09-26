@@ -142,31 +142,34 @@ class Mercado {
         return this.historial;
     }
 
-    // Función para mostrar una transacción de forma más bonita
+
     private formatearTransaccion(transaccion: any): string {
-        return `📊 Transacción realizada:
-        - Compañía: ${transaccion.compania}
-        - Acciones intercambiadas: ${transaccion.cantidad}
-        - Precio por acción: $${transaccion.precio}
-        - Comprador: ${transaccion.comprador}
-        - Vendedor: ${transaccion.vendedor}`;
+        return `💼 Transacción completada:
+        🏢 Empresa: ${transaccion.compania}
+        🔄 Acciones intercambiadas: ${transaccion.cantidad}
+        💵 Precio por acción: $${transaccion.precio.toFixed(2)}
+        👤 Comprador: ${transaccion.comprador}
+        👤 Vendedor: ${transaccion.vendedor}
+        -----------------------------------------------`;
     }
 
-    // Función para mostrar el historial completo de forma organizada
+    
     mostrarHistorialBonito() {
         if (this.historial.length === 0) {
-            console.log("No se han realizado transacciones aún.");
+            console.log("🚫 No se han realizado transacciones aún.");
         } else {
             console.log("📈 Historial de Transacciones:");
             this.historial.forEach((transaccion, index) => {
-                console.log(`${index + 1}. ${this.formatearTransaccion(transaccion)}`);
+                console.log(`${index + 1}️⃣ ${this.formatearTransaccion(transaccion)}`);
             });
         }
     }
 
-    // Función para mostrar el mensaje inicial con las empresas
+
+    
     mostrarEmpresas() {
-        console.log("📢 Bienvenidos al Simulador de Mercado de Acciones.");
+        console.log("Bienvenido a mi proyecto.");
+        console.log("Simulador de un Mercado de Acciones.");
         console.log("Las siguientes empresas están ofreciendo sus acciones en este momento:");
         console.log("1. TechCorp - Líder en el sector tecnológico.");
         console.log("2. FinCo - Referente en el sector financiero.");
@@ -175,7 +178,7 @@ class Mercado {
 
 }
 
-// Probar el simulador con más órdenes para poner a prueba los montículos
+
 const mercado = new Mercado();
 
 // Mostrar las empresas antes de las transacciones
@@ -199,5 +202,5 @@ mercado.enviarOrden(new Orden("compra", "FinCo", 100, 80, comprador));
 mercado.enviarOrden(new Orden("venta", "FinCo", 100, 70, vendedor));
 mercado.enviarOrden(new Orden("compra", "FinCo", 90, 90, comprador));
 
-// Mostrar el historial de transacciones de forma bonita
+// Mostrar el historial de transacciones
 mercado.mostrarHistorialBonito();
