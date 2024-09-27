@@ -145,9 +145,10 @@ class SimuladorMercado {
 
     // Mostrar bienvenida con las empresas
     mostrarEmpresas() {
-        console.log("📢 Bienvenidos al Simulador de Mercado de Acciones.");
+        console.log("Bienvenidos a mi proyecto");
+        console.log("Simulador de un Mercado de Acciones")
         console.log("Las siguientes empresas están ofreciendo sus acciones en este momento:");
-        console.log("1. TechCorp - Líder en el sector tecnológico.");
+        console.log("1. TechCorp - Líder en el sector tecnológico."); 
         console.log("2. FinCo - Referente en el sector financiero.");
         console.log("--------------------------------------------------------");
     }
@@ -234,7 +235,7 @@ const simulador = new SimuladorMercado();
 simulador.mostrarEmpresas();
 
 // Ingresar algunas órdenes de compra y venta
-simulador.insertarCompra({ compania: "TechCorp", cantidad: 100, precio: 55, comprador: "Carlos" });
+simulador.insertarCompra({ compania: "TechCorp", cantidad: 100, precio: 100, comprador: "Carlos" });
 simulador.insertarVenta({ compania: "TechCorp", cantidad: 100, precio: 50, vendedor: "Sofía" });
 simulador.insertarCompra({ compania: "FinCo", cantidad: 200, precio: 75, comprador: "Carlos" });
 simulador.insertarVenta({ compania: "FinCo", cantidad: 150, precio: 70, vendedor: "Sofía" });
