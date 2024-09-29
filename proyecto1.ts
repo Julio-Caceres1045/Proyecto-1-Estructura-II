@@ -1,21 +1,28 @@
 class MaxHeap {
     private heap: any[];
+    private size: number;
 
     constructor() {
         this.heap = [];
+        this.size = 0;
     }
 
     agregarOrden(orden: any) {
-        this.heap.push(orden);
-        this.subirElemento(this.heap.length - 1);
+        this.heap[this.size] = orden;  // Asigna el nuevo elemento en el índice "size"
+        this.size++;
+        this.subirElemento(this.size - 1);
     }
 
     removerMaximo() {
-        if (this.heap.length === 0) return null;
-        if (this.heap.length === 1) return this.heap.pop();
+        if (this.size === 0) return null;
+        if (this.size === 1) {
+            this.size--;
+            return this.heap.pop();
+        }
 
         const max = this.heap[0];
-        this.heap[0] = this.heap.pop()!;
+        this.heap[0] = this.heap[this.size - 1];
+        this.size--;
         this.bajarElemento(0);
         return max;
     }
@@ -39,7 +46,7 @@ class MaxHeap {
     private bajarElemento(index: number) {
         let currentIndex = index;
         const currentElement = this.heap[currentIndex];
-        const length = this.heap.length;
+        const length = this.size;
 
         while (true) {
             let leftChildIndex = 2 * currentIndex + 1;
@@ -61,28 +68,35 @@ class MaxHeap {
     }
 
     visualizar() {
-        console.log("📊 Órdenes de compra:", this.heap);
+        console.log("📊 Órdenes de compra (MaxHeap):", this.heap.slice(0, this.size));
     }
 }
 
 class MinHeap {
     private heap: any[];
+    private size: number;
 
     constructor() {
         this.heap = [];
+        this.size = 0;
     }
 
     agregarOrden(orden: any) {
-        this.heap.push(orden);
-        this.subirElemento(this.heap.length - 1);
+        this.heap[this.size] = orden;  // Asigna el nuevo elemento en el índice "size"
+        this.size++;
+        this.subirElemento(this.size - 1);
     }
 
     removerMinimo() {
-        if (this.heap.length === 0) return null;
-        if (this.heap.length === 1) return this.heap.pop();
+        if (this.size === 0) return null;
+        if (this.size === 1) {
+            this.size--;
+            return this.heap.pop();
+        }
 
         const min = this.heap[0];
-        this.heap[0] = this.heap.pop()!;
+        this.heap[0] = this.heap[this.size - 1];
+        this.size--;
         this.bajarElemento(0);
         return min;
     }
@@ -106,7 +120,7 @@ class MinHeap {
     private bajarElemento(index: number) {
         let currentIndex = index;
         const currentElement = this.heap[currentIndex];
-        const length = this.heap.length;
+        const length = this.size;
 
         while (true) {
             let leftChildIndex = 2 * currentIndex + 1;
@@ -128,7 +142,7 @@ class MinHeap {
     }
 
     visualizar() {
-        console.log("📊 Órdenes de venta (MinHeap):", this.heap);
+        console.log("📊 Órdenes de venta (MinHeap):", this.heap.slice(0, this.size));
     }
 }
 
@@ -144,8 +158,7 @@ class SimuladorMercado {
     }
 
     mostrarEmpresas() {
-        console.log("Bienvenido a mi proyecto");
-        console.log("Simulador de un Mercado de Acciones")
+        console.log("📢 Bienvenidos al Simulador de Mercado de Acciones.");
         console.log("Las siguientes empresas están ofreciendo sus acciones en este momento:");
         console.log("1. Apple - Líder en el sector tecnológico.");
         console.log("2. Microsoft - Referente en el sector de software.");
