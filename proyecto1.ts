@@ -8,7 +8,7 @@ class MaxHeap {
     }
 
     agregarOrden(orden: any) {
-        this.heap[this.size] = orden;  // Asigna el nuevo elemento en el índice "size"
+        this.heap[this.size] = orden;
         this.size++;
         this.subirElemento(this.size - 1);
     }
@@ -68,7 +68,14 @@ class MaxHeap {
     }
 
     visualizar() {
-        console.log("📊 Órdenes de compra (MaxHeap):", this.heap.slice(0, this.size));
+        console.log("📊 Órdenes de compra:");
+        console.log("══════════════════════════════════════════════════════════════");
+        console.log(" Empresa     | Cantidad | Precio  | Comprador");
+        console.log("══════════════════════════════════════════════════════════════");
+        this.heap.slice(0, this.size).forEach(orden => {
+            console.log(`${orden.compania.padEnd(12)} | ${orden.cantidad.toString().padEnd(8)} | ${orden.precio.toString().padEnd(7)} | ${orden.comprador}`);
+        });
+        console.log("══════════════════════════════════════════════════════════════");
     }
 }
 
@@ -82,7 +89,7 @@ class MinHeap {
     }
 
     agregarOrden(orden: any) {
-        this.heap[this.size] = orden;  // Asigna el nuevo elemento en el índice "size"
+        this.heap[this.size] = orden;
         this.size++;
         this.subirElemento(this.size - 1);
     }
@@ -142,7 +149,14 @@ class MinHeap {
     }
 
     visualizar() {
-        console.log("📊 Órdenes de venta (MinHeap):", this.heap.slice(0, this.size));
+        console.log("📊 Órdenes de venta:");
+        console.log("══════════════════════════════════════════════════════════════");
+        console.log(" Empresa     | Cantidad | Precio  | Vendedor");
+        console.log("══════════════════════════════════════════════════════════════");
+        this.heap.slice(0, this.size).forEach(orden => {
+            console.log(`${orden.compania.padEnd(12)} | ${orden.cantidad.toString().padEnd(8)} | ${orden.precio.toString().padEnd(7)} | ${orden.vendedor}`);
+        });
+        console.log("══════════════════════════════════════════════════════════════");
     }
 }
 
@@ -158,10 +172,11 @@ class SimuladorMercado {
     }
 
     mostrarEmpresas() {
-        console.log("📢 Bienvenidos al Simulador de Mercado de Acciones.");
+        console.log("Bienvenido a mi proyecto");
+        console.log("Simulador de un Mercado de acciones")
         console.log("Las siguientes empresas están ofreciendo sus acciones en este momento:");
-        console.log("1. Apple - Líder en el sector tecnológico.");
-        console.log("2. Microsoft - Referente en el sector de software.");
+        console.log("1. Apple");
+        console.log("2. Microsoft");
         console.log("--------------------------------------------------------");
     }
 
@@ -175,10 +190,10 @@ class SimuladorMercado {
             if (compra.precio >= venta.precio) {
                 const cantidadIntercambiada = Math.min(compra.cantidad, venta.cantidad);
 
-                console.log(`💼 Emparejando: ${compra.comprador} comprando de ${venta.vendedor}`);
-                console.log(`   🏢 Empresa: ${compra.compania}`);
-                console.log(`   🔄 Acciones intercambiadas: ${cantidadIntercambiada}`);
-                console.log(`   💵 Precio de compra: ${compra.precio} | Precio de venta: ${venta.precio}`);
+                console.log(` Emparejando: ${compra.comprador} comprando de ${venta.vendedor}`);
+                console.log(`    Empresa: ${compra.compania}`);
+                console.log(`    Acciones intercambiadas: ${cantidadIntercambiada}`);
+                console.log(`    Precio de compra: ${compra.precio} | Precio de venta: ${venta.precio}`);
                 console.log("--------------------------------------------------------");
 
                 this.historial.push({
@@ -206,16 +221,6 @@ class SimuladorMercado {
         this.minHeapVentas.agregarOrden(orden);
     }
 
-    private formatearTransaccion(transaccion: any): string {
-        return `💼 Transacción completada:
-    🏢 Empresa: ${transaccion.compania}
-    🔄 Acciones intercambiadas: ${transaccion.cantidad}
-    💵 Precio por acción: $${transaccion.precio.toFixed(2)}
-    👤 Comprador: ${transaccion.comprador}
-    👤 Vendedor: ${transaccion.vendedor}
-    -----------------------------------------------`;
-    }
-
     mostrarHistorialDeTransacciones() {
         if (this.historial.length === 0) {
             console.log("🚫 No se han realizado transacciones aún.");
@@ -231,19 +236,27 @@ class SimuladorMercado {
         this.maxHeapCompras.visualizar();
         this.minHeapVentas.visualizar();
     }
+
+    private formatearTransaccion(transaccion: any): string {
+        return `💼 Transacción completada:
+    🏢 Empresa: ${transaccion.compania}
+    🔄 Acciones intercambiadas: ${transaccion.cantidad}
+    💵 Precio por acción: $${transaccion.precio.toFixed(2)}
+    👤 Comprador: ${transaccion.comprador}
+    👤 Vendedor: ${transaccion.vendedor}
+    -----------------------------------------------`;
+    }
 }
 
-// Simulación de uso
+
 const simulador = new SimuladorMercado();
 simulador.mostrarEmpresas();
 
-simulador.agregarCompra({ compania: "Apple", cantidad: 100, precio: 150, comprador: "Carlos" });
-simulador.agregarVenta({ compania: "Apple", cantidad: 100, precio: 50, vendedor: "Sofía" });
-simulador.agregarCompra({ compania: "Microsoft", cantidad: 200, precio: 75, comprador: "Carlos" });
-simulador.agregarVenta({ compania: "Microsoft", cantidad: 150, precio: 70, vendedor: "Sofía" });
+simulador.agregarCompra({ compania: "Apple", cantidad: 100, precio: 55, comprador: "Carlos" });
+simulador.agregarCompra({ compania: "Microsoft", cantidad: 80, precio: 53, comprador: "María" });
+simulador.agregarVenta({ compania: "Apple", cantidad: 100, precio: 50, vendedor: "Pedro" });
+simulador.agregarVenta({ compania: "Microsoft", cantidad: 50, precio: 52, vendedor: "Ana" });
 
 simulador.mostrarOrdenes();
-
 simulador.procesarOrdenes();
-
 simulador.mostrarHistorialDeTransacciones();
